@@ -1,6 +1,11 @@
 on:
+on:
+  issues:
+    types: [project_card]
   project_card:
     types: [created, updated, moved, converted, deleted]
+
+workflow_dispatch:
 
 jobs:
   project_events:
