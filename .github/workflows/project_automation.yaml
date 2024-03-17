@@ -1,0 +1,28 @@
+name: Project V2 Events
+
+on:
+  project:
+    types: [*]
+  project_card:
+    types: [*]
+
+jobs:
+  project_events:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Project Event
+        if: ${{ github.event_name == 'project' }}
+        run: |
+          echo "Project Event: ${{ github.event.action }}"
+          echo "Project ID: ${{ github.event.project.id }}"
+          echo "Project Name: ${{ github.event.project.name }}"
+
+      - name: Project Card Event
+        if: ${{ github.event_name == 'project_card' }}
+        run: |
+          echo "Project Card Event: ${{ github.event.action }}"
+          echo "Project Card ID: ${{ github.event.project_card.id }}"
+          echo "Project Card Note: ${{ github.event.project_card.note }}"
