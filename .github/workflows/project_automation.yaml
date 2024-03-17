@@ -1,18 +1,16 @@
-name: Issue Status Change Workflow
-
 on:
   issues:
-    types: [opened, edited, closed, reopened, assigned, unassigned, labeled, unlabeled]
+    types: [opened]
+  project_card:
+    types: [created, moved]
 
 jobs:
   issue_status_change:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
       - name: Issue Status Change Event
         run: |
           echo "Issue Event: ${{ github.event.action }}"
           echo "Issue Title: ${{ github.event.issue.title }}"
           echo "Issue Body: ${{ github.event.issue.body }}"
+          cat $GITHUB_EVENT_PATH
