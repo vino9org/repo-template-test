@@ -120,7 +120,7 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
 
-  clean-up:
+  cleanup:
     needs: buildx
     runs-on: ubuntu-latest
 
