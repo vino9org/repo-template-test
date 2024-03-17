@@ -1,0 +1,85 @@
+.gitconfig
+
+# editor stuff
+## Visual Studio Code
+.vscode
+.factorypath
+
+## OSX
+.DS_Store
+
+# Vim
+*.swp
+*.swo
+
+## patch
+*.orig
+*.rej
+
+## Local environment
+.env
+
+
+# javs stuff
+## Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+**/target/
+**/pom.xml.tag
+**/pom.xml.releaseBackup
+**/pom.xml.versionsBackup
+
+## Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+## IntelliJ
+.idea/
+.idea
+*.ipr
+*.iml
+*.iws
+
+## NetBeans
+nb-configuration.xml
+
+## openapi generator junk
+.openapi-generator-ignore
+.openapi-generator/
+.swagger-codegen-ignore
+.swagger-codegen/
+schema/out
+
+## sonar scanner
+**/.scannerwork/*
+
+# Python stuff
+## local convenience scripts
+*.swp
+package-lock.json
+__pycache__
+.pytest_cache
+.venv
+*.egg-info
+
+## CDK asset staging directory
+.cdk.staging
+cdk.out
+
+## test reports
+test-report/
+.coverage
+coverage.xml
+pytest_junit.xml
+
+## mypy
+.mypy_cache/
+
+## AWS SAM CLI
+.aws-sam/
+
