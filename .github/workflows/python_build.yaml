@@ -58,8 +58,8 @@ jobs:
       run: |
         flake8 --count --show-source --statistics
 
-    - id: unit_tests
-      name: Unit tests
+    - name: Unit tests
+      id: unit_tests
       run: |
         pytest -v -s --cov-report=html
 
@@ -67,12 +67,12 @@ jobs:
           echo "coverage_report=yes" >> $GITHUB_OUTPUT
         fi
 
-      - name: Upload test coverage report to GitHub pages
-        if: steps.unit_tests.outputs.coverage == 'yes'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: coverage
+    - name: Upload test coverage report to GitHub pages
+      if: steps.unit_tests.outputs.coverage == 'yes'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: coverage
 
     - name: set image metadata
       id: meta
