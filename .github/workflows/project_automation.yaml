@@ -1,8 +1,6 @@
 on:
-  issues:
-    types: [opened]
-  project_card:
-    types: [created, moved]
+  projects_v2_item
+    types: [created, edited]
 
 jobs:
   issue_status_change:
