@@ -1,5 +1,4 @@
 on:
-on:
   issues:
     types: [project_card]
   project_card:
