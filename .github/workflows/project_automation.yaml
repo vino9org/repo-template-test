@@ -1,6 +1,8 @@
 on:
   projects_v2_item
-    types: [created, edited]
+    types: 
+      - created
+      - edited
 
 jobs:
   issue_status_change:
