@@ -2,9 +2,7 @@ name: Project V2 Events
 
 on:
   project:
-    types: [*]
   project_card:
-    types: [*]
 
 jobs:
   project_events:
