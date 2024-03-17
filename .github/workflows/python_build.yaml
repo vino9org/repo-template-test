@@ -15,7 +15,8 @@
 #  CAVEATS:
 #
 #  does not support copmlete gitflow that uses long running release branches.
-
+#  ref develop-python is for testing only. plesae do not remove the setting nor use it as your branch name
+#
 on:
   push:
     branches:
@@ -74,7 +75,7 @@ jobs:
 
   buildx:
     needs: pytest
-    if: startsWith(github.ref, 'refs/heads/develop-python') || startsWith(github.ref, 'refs/heads/main')
+    if: startsWith(github.ref, 'refs/heads/develop') || startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/develop-python')
     runs-on: ubuntu-latest
 
     steps:
@@ -88,6 +89,7 @@ jobs:
         tags: |
           type=ref,event=tag
           type=raw,value=develop-{{date 'YYYYMMDD-HHmmss' tz='Asia/Singapore'}}-{{sha}},enable=${{ github.ref == 'refs/heads/develop' }}
+          type=raw,value=temp-{{date 'YYYYMMDD-HHmmss' tz='Asia/Singapore'}}-{{sha}},enable=${{ github.ref == 'refs/heads/develop-python' }}
         flavor: |
           latest=false
         labels: |
