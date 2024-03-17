@@ -114,7 +114,7 @@ jobs:
           elif [ "${{ github.ref }}"  = "refs/heads/develop" ]; then
             TAG_PREFIX="develop"
           else
-            TAG_PREFIX="temp"
+            TAG_PREFIX="tempj"
           fi
 
           TAGS="${TAG_PREFIX}-${TAG_TIMESTAMP}"
