@@ -67,7 +67,7 @@ jobs:
         fi
 
     - name: Upload test coverage report to GitHub pages
-      if: steps.unit_tests.outputs.coverage == 'yes'
+      if: steps.unit_tests.outputs.coverage_report == 'yes'
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
