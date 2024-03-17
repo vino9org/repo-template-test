@@ -1,7 +1,6 @@
 on:
-on:
   issues:
-    types: [project_card]
+    types: [opened, edited]
   project_card:
     types: [created, updated, moved, converted, deleted]
 
