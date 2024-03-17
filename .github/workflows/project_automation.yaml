@@ -1,8 +1,8 @@
 name: Project V2 Events
 
 on:
-  project:
   project_card:
+    types: [created, updated, moved, converted, deleted]
 
 jobs:
   project_events:
