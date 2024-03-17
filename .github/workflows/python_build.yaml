@@ -59,9 +59,9 @@ jobs:
     - name: Unit tests
       id: unit_tests
       run: |
-        pytest -v -s --cov-report=html
+        pytest -v -s --cov --cov-report=html
 
-        if [[ -d "coverage" ]]; then
+        if [[ -f "htmlcov/index.html" ]]; then
           echo "coverage_report=yes" >> $GITHUB_OUTPUT
         fi
 
@@ -70,7 +70,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: coverage
+        publish_dir: htmlcov
 
   buildx:
     needs: pytest
