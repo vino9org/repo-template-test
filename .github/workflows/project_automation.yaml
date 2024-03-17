@@ -1,21 +1,18 @@
+name: Issue Status Change Workflow
+
 on:
   issues:
-    types: [opened, edited]
-  project_card:
-    types: [created, updated, moved, converted, deleted]
-
-workflow_dispatch:
+    types: [opened, edited, closed, reopened, assigned, unassigned, labeled, unlabeled]
 
 jobs:
-  project_events:
+  issue_status_change:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
-      - name: Project Card Event
-        if: ${{ github.event_name == 'project_card' }}
+      - name: Issue Status Change Event
         run: |
-          echo "Project Card Event: ${{ github.event.action }}"
-          echo "Project Card ID: ${{ github.event.project_card.id }}"
-          echo "Project Card Note: ${{ github.event.project_card.note }}"
+          echo "Issue Event: ${{ github.event.action }}"
+          echo "Issue Title: ${{ github.event.issue.title }}"
+          echo "Issue Body: ${{ github.event.issue.body }}"
