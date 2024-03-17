@@ -1,5 +1,5 @@
 on:
-  projects_v2_item:
+  projects_v2_items:
     types: 
       - created
       - edited
