@@ -69,7 +69,6 @@ jobs:
       - name: Check coverage report
         id: check_report
         run: |
-          ls -l target
           if [[ -f "target/jacoco/index.html" ]]; then
             echo found coverage report
             echo "coverage_report=yes" >> $GITHUB_OUTPUT
@@ -78,7 +77,7 @@ jobs:
           fi
 
       - name: Upload test coverage report to GitHub pages
-        if: steps.check_report.outputs.coverage == 'yes'
+        if: steps.check_report.outputs.coverage_report == 'yes'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
