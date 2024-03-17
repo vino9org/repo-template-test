@@ -20,9 +20,8 @@
 on:
   push:
     branches:
-      # - develop
-      # - main
-      # only for test in this repo
+      - develop
+      - main
       - develop-python
 
   pull_request:
@@ -72,6 +71,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: htmlcov
+      continue-on-error: true
 
   buildx:
     needs: pytest
