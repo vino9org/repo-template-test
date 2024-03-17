@@ -74,6 +74,7 @@ jobs:
 
   buildx:
     needs: pytest
+    if: startsWith(github.ref, 'refs/heads/develop-python') || startsWith(github.ref, 'refs/heads/main')
     runs-on: ubuntu-latest
 
     steps:
@@ -93,15 +94,12 @@ jobs:
           org.opencontainers.image.source https://github.com/{{ github.repository }}
 
     - name: Set up QEMU
-      if: steps.meta.outputs.tags != ''
       uses: docker/setup-qemu-action@v3
 
     - name: Set up docker buildx
-      if: steps.meta.outputs.tags != ''
       uses: docker/setup-buildx-action@v3
 
     - name: Login to ghcr.io
-      if: steps.meta.outputs.tags != ''
       uses: docker/login-action@v3
       with:
         registry: ghcr.io
@@ -109,7 +107,6 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build and push
-      if: steps.meta.outputs.tags != ''
       uses: docker/build-push-action@v5
       with:
         # use path context so that .dockerignore will be processed.
@@ -125,7 +122,7 @@ jobs:
 
     steps:
     - name: Delete old images
-      uses: actions/delete-package-versions@v4
+      uses: actions/delete-package-versions@v5
       with:
         owner: ${{ github.repository_owner }}
         package-name: ${{ github.event.repository.name }}
@@ -133,3 +130,4 @@ jobs:
         min-versions-to-keep: 5
         ignore-versions: latest
         token: ${{ secrets.GITHUB_TOKEN }}
+      continue-on-error: true
